@@ -27,7 +27,7 @@ Function logger($strMessage, [switch]$logOnly,[switch]$consoleOnly)
 	}
 }
 
-Logger "Deploying MGMT WLD Edge Cluster and AVN Configuration"
+Logger "Deploying Virtual Infrastructure Workload Domain"
 
 Start-Process powershell -Argumentlist "`$host.UI.RawUI.WindowTitle = 'VLC Logging window';Get-Content '$logfile' -wait"
 
@@ -52,13 +52,13 @@ $availableHosts = $(Get-VCFHost | Where-Object {$_.status -match "UNASSIGNED_USE
 
 logger "Getting default VI Workload Domain Configuration file and populating the Host Id"
 # Get the NSX Edge Cluster config and convert it from JSON to a PSObject, then store it in a variable
-$wldPayload = $(get-content "$scriptdir\json\WLD_DOMAIN_API.json" | ConvertFrom-JSON)
+$wldPayload = $(get-content "$scriptdir\WLD_DOMAIN_API.json" | ConvertFrom-JSON)
 $hstCnt = 0
 $wldPayload.computeSpec.clusterSpecs.hostSpecs | Foreach {$_.id = $availableHosts[$hstCnt];$hstCnt++}
 
 logger "Writing new VI Workload Domain Configuration file"
 # convert the PSObject to a JSON file and save it as a new JSON
-$($wldPayload | ConvertTo-JSON -Depth 10) | Out-File "$scriptDir\json\VIWLD.json"
+$($wldPayload | ConvertTo-JSON -Depth 10) | Out-File "$scriptDir\VIWLD.json"
 
 logger "Deploying Edge Cluster"
 $edgeDeploy = New-VCFWorkloadDomain -json "$scriptDir\json\VIWLD.json"
