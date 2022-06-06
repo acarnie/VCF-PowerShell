@@ -52,14 +52,14 @@ $sddcClusterid = $(get-vcfworkloaddomain | Where-Object { $_.type -match "MANAGE
 
 logger "Getting default Edge CLuster JSON Configuration file and populating clusterId"
 # Get the NSX Edge Cluster config and convert it from JSON to a PSObject, then store it in a variable
-$edgeClusterPayload = $(get-content "$scriptdir\json\NSX_Edge_Cluster.json" | ConvertFrom-JSON)
+$edgeClusterPayload = $(get-content "$scriptdir\NSX_Edge_Cluster.json" | ConvertFrom-JSON)
 
 # Find all entries for Cluster ID and replace the existing entry with the management cluster ID
 $edgeClusterPayload.edgeNodeSpecs | ForEach-Object {$_.clusterID = $sddcClusterId}
 
 logger "Writing new Edge Cluster Configuration file"
 # convert the PSObject to a JSON file and save it as a new JSON
-$($edgeClusterPayload | ConvertTo-JSON -Depth 10) | Out-File "$scriptDir\json\MGMT_Edge_Cluster.json"
+$($edgeClusterPayload | ConvertTo-JSON -Depth 10) | Out-File "$scriptDir\MGMT_Edge_Cluster.json"
 
 logger "Deploying Edge Cluster"
 $edgeDeploy = New-VCFEdgeCluster -json "$scriptDir\json\MGMT_Edge_Cluster.json"
