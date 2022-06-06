@@ -1,0 +1,62 @@
+{
+    "asn": 65003,
+    "edgeAdminPassword": "VMware123!VMware123!",
+    "edgeAuditPassword": "VMware123!VMware123!",
+    "edgeRootPassword": "VMware123!VMware123!",
+    "mtu": 8000,
+    "tier0Name": "cmi-m01-ec01-t0-gw01",
+    "tier0RoutingType": "EBGP",
+    "tier0ServicesHighAvailability": "ACTIVE_ACTIVE",
+    "tier1Name": "cmi-m01-ec01-t1-gw01",
+    "edgeClusterName": "cmi-m01-ec01",
+    "edgeClusterProfileType": "DEFAULT",
+    "edgeClusterType": "NSX-T",
+    "edgeFormFactor": "MEDIUM",
+    "edgeNodeSpecs": [ {
+        "clusterId": "",
+        "edgeNodeName": "cmi-m01-en01.elasticsky.org",
+        "edgeTep1IP": "172.27.13.2/24",
+        "edgeTep2IP": "172.27.13.3/24",
+        "edgeTepGateway": "172.27.13.253",
+        "edgeTepVlan": 3532,
+        "interRackCluster": false,
+        "managementGateway": "10.0.0.253",
+        "managementIP": "10.0.0.24/24",
+        "uplinkNetwork": [ {
+            "asnPeer": 65001,
+            "bgpPeerPassword": "VMware1!",
+            "peerIP": "172.27.11.253/24",
+            "uplinkInterfaceIP": "172.27.11.2/24",
+            "uplinkVlan": 3530
+        },{
+            "asnPeer": 65001,
+            "bgpPeerPassword": "VMware1!",
+            "peerIP": "172.27.12.253/24",
+            "uplinkInterfaceIP": "172.27.12.2/24",
+            "uplinkVlan": 3531
+        } ]
+    },{
+        "clusterId": "",
+        "edgeNodeName": "cmi-m01-en02.elasticsky.org",
+        "edgeTep1IP": "172.27.13.4/24",
+        "edgeTep2IP": "172.27.13.5/24",
+        "edgeTepGateway": "172.27.13.253",
+        "edgeTepVlan": 3532,
+        "interRackCluster": false,
+        "managementGateway": "10.0.0.221",
+        "managementIP": "10.0.0.25/24",
+        "uplinkNetwork": [ {
+            "asnPeer": 65001,
+            "bgpPeerPassword": "VMware1!",
+            "peerIP": "172.27.11.253/24",
+            "uplinkInterfaceIP": "172.27.11.3/24",
+            "uplinkVlan": 3530
+        },{
+            "asnPeer": 65001,
+            "bgpPeerPassword": "VMware1!",
+            "peerIP": "172.27.12.253/24",
+            "uplinkInterfaceIP": "172.27.12.3/24",
+            "uplinkVlan": 3531
+        } ]
+    } ]
+}

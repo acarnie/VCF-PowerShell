@@ -1,0 +1,171 @@
+{
+  "domainName": "cmi-w01",
+  "vcenterSpec": {
+    "name": "cmi-w01-vc01",
+    "networkDetailsSpec": {
+      "ipAddress": "10.0.0.50",
+      "dnsName": "cmi-w01-vc01.elasticsky.org",
+      "gateway": "10.0.0.253",
+      "subnetMask": "255.255.255.0"
+    },
+    "rootPassword": "VMware123!",
+    "datacenterName": "cmi-w01-dc01",
+    "vmSize": "tiny",
+    "storageSize": "lstorage"
+  },
+  "computeSpec": {
+    "clusterSpecs": [
+      {
+        "name": "cmi-w01-cl01",
+        "hostSpecs": [
+          {
+            "id": "317b83cb-4980-4dee-b94b-c32ade850e60",
+            "licenseKey": "004R1-9H00K-88KR1-0J7RM-2WZ42",
+            "hostNetworkSpec": {
+              "vmNics": [
+                {
+                  "id": "vmnic0",
+                  "vdsName": "cmi-w01-cl01-vds01"
+                },
+                {
+                  "id": "vmnic1",
+                  "vdsName": "cmi-w01-cl01-vds01"
+                },
+                {
+                  "id": "vmnic2",
+                  "vdsName": "cmi-w01-cl01-vds02"
+                },
+                {
+                  "id": "vmnic3",
+                  "vdsName": "cmi-w01-cl01-vds02"
+                }
+              ]
+            }
+          },
+          {
+            "id": "188935a7-7b4d-412a-a015-26cb6ba9a1b0",
+            "licenseKey": "004R1-9H00K-88KR1-0J7RM-2WZ42",
+            "hostNetworkSpec": {
+              "vmNics": [
+                {
+                  "id": "vmnic0",
+                  "vdsName": "cmi-w01-cl01-vds01"
+                },
+                {
+                  "id": "vmnic1",
+                  "vdsName": "cmi-w01-cl01-vds01"
+                },
+                {
+                  "id": "vmnic2",
+                  "vdsName": "cmi-w01-cl01-vds02"
+                },
+                {
+                  "id": "vmnic3",
+                  "vdsName": "cmi-w01-cl01-vds02"
+                }
+              ]
+            }
+          },
+          {
+            "id": "7d49f267-753d-4202-b2f2-290ea42694d8",
+            "licenseKey": "004R1-9H00K-88KR1-0J7RM-2WZ42",
+            "hostNetworkSpec": {
+              "vmNics": [
+                {
+                  "id": "vmnic0",
+                  "vdsName": "cmi-w01-cl01-vds01"
+                },
+                {
+                  "id": "vmnic1",
+                  "vdsName": "cmi-w01-cl01-vds01"
+                },
+                {
+                  "id": "vmnic2",
+                  "vdsName": "cmi-w01-cl01-vds02"
+                },
+                {
+                  "id": "vmnic3",
+                  "vdsName": "cmi-w01-cl01-vds02"
+                }
+              ]
+            }
+          }
+        ],
+        "datastoreSpec": {
+          "vsanDatastoreSpec": {
+            "failuresToTolerate": 1,
+            "licenseKey": "X02TH-9JW45-R82N0-0EYA0-1XCJ3",
+            "datastoreName": "cmi-w01-cl01-ds-vsan01"
+          }
+        },
+        "networkSpec": {
+          "vdsSpecs": [
+            {
+              "name": "cmi-w01-cl01-vds01",
+              "isUsedByNsxt": true,
+              "portGroupSpecs": [
+                {
+                  "name": "cmi-w01-cl01-vds01-pg-mgmt",
+                  "transportType": "MANAGEMENT"
+                },
+                {
+                  "name": "cmi-w01-cl01-vds01-pg-vmotion",
+                  "transportType": "VMOTION"
+                }
+              ]
+            },
+            {   
+              "name" : "cmi-w01-cl01-vds02",
+              "portGroupSpecs" : [ 
+                {
+                  "name" : "cmi-w01-cl01-vds02-pg-vsan",
+                  "transportType" : "VSAN"
+                } 
+              ]
+            }],
+              "nsxClusterSpec": {
+                "nsxTClusterSpec": {
+                  "geneveVlanId": 3534
+                }
+              }
+            }
+          }
+    ]
+  },
+  "nsxTSpec": {
+    "nsxManagerSpecs": [
+      {
+        "name": "cmi-w01-nsx01a",
+        "networkDetailsSpec": {
+          "ipAddress": "10.0.0.52",
+          "dnsName": "cmi-w01-nsx01a.elasticsky.org",
+          "gateway": "10.0.0.253",
+          "subnetMask": "255.255.255.0"
+        }
+      },
+      {
+        "name": "cmi-w01-nsx01b",
+        "networkDetailsSpec": {
+          "ipAddress": "10.0.0.53",
+          "dnsName": "cmi-w01-nsx01b.elasticsky.org",
+          "gateway": "10.0.0.253",
+          "subnetMask": "255.255.255.0"
+        }
+      },
+      {
+        "name": "cmi-w01-nsx01c",
+        "networkDetailsSpec": {
+          "ipAddress": "10.0.0.54",
+          "dnsName": "cmi-w01-nsx01c.elasticsky.org",
+          "gateway": "10.0.0.253",
+          "subnetMask": "255.255.255.0"
+        }
+      }
+    ],
+    "vip": "10.0.0.51",
+    "vipFqdn": "cmi-w01-nsx01.elasticsky.org",
+    "licenseKey": "J14KM-C01EM-G8JW9-0K100-2HT33",
+    "nsxManagerAdminPassword": "VMware123!VMware123!",
+    "formFactor": "medium"
+  }
+}
