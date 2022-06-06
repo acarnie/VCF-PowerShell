@@ -38,20 +38,23 @@ $ssoPass = "VMware123!"
 $sddcMgrVMName = "cmi-vcf01"
 $sddcUser = "root"
 $sddcPassword = "VMware123!"
-$vcenter = Get-VCFWorkloadDomain | Where-Object { $_.type -match "MANAGEMENT" } | Select-Object -ExpandProperty vcenters
 
 # Authenticate to SDDC Manager using global variables defined at the top of the script
+logger " Connecting to SDDC Manager"
 Request-VCFToken -fqdn $sddcManagerfqdn -username $ssoUser -password $ssoPass
-Connect-VIServer -server $vcenter.fqdn -user $ssoUser -password $ssoPass
 
 Start-Sleep 5
-
 
 # ==================== Configure Repository ====================
 
 # Variables for configuring the SDDC Manager Depot
 $depotUser = "nasawest@vmware.com"
 $depotPassword = "Supporthelp1$"
+$vcenter = Get-VCFWorkloadDomain | Where-Object { $_.type -match "MANAGEMENT" } | Select-Object -ExpandProperty vcenters
+
+# Connect to vCenter
+logger "Connecting to vCenter"
+Connect-VIServer -server $vcenter.fqdn -user $ssoUser -password $ssoPass
 
 # NOTE:  The changes to the base images and poll interval are for demonstration purposes, and should only be changed after you have consulted with your customer regarding upgrades to any existing VCF deployments
 logger "Creating Script to Modify Default LCM Settings for Base Bundle and Polling Interval"
