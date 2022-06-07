@@ -1,0 +1,17 @@
+kub-admin
+nsx-admin
+sddc-admin
+sddc-ro
+svc-vcf-ca
+svc-vra-nsx
+svc-vra-vcf
+svc-vra-vrops
+svc-vra-vsphere
+svc-vrops-vra
+svc-vro-vsphere
+svc-vsphere-ad
+svc-wsa-ad
+vra-ca-admin
+vrli-admin
+vrops-admin
+wsa-admin
