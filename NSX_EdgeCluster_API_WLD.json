@@ -1,0 +1,62 @@
+{
+    "asn": 65003,
+    "edgeAdminPassword": "VMware123!VMware123!",
+    "edgeAuditPassword": "VMware123!VMware123!",
+    "edgeRootPassword": "VMware123!VMware123!",
+    "mtu": 8000,
+    "tier0Name": "cmi-w01-ec01-t0-gw01",
+    "tier0RoutingType": "EBGP",
+    "tier0ServicesHighAvailability": "ACTIVE_ACTIVE",
+    "tier1Name": "cmi-w01-ec01-t1-gw01",
+    "edgeClusterName": "cmi-w01-ec01",
+    "edgeClusterProfileType": "DEFAULT",
+    "edgeClusterType": "NSX-T",
+    "edgeFormFactor": "LARGE",
+    "edgeNodeSpecs": [ {
+        "clusterId": "607baa00-6182-459b-8673-ca516620124e",
+        "edgeNodeName": "cmi-w01-en01.elasticsky.org",
+        "edgeTep1IP": "172.27.13.10/24",
+        "edgeTep2IP": "172.27.13.11/24",
+        "edgeTepGateway": "172.27.13.253",
+        "edgeTepVlan": 3532,
+        "interRackCluster": false,
+        "managementGateway": "10.0.0.253",
+        "managementIP": "10.0.0.28/24",
+        "uplinkNetwork": [ {
+            "asnPeer": 65001,
+            "bgpPeerPassword": "VMware1!",
+            "peerIP": "172.27.11.253/24",
+            "uplinkInterfaceIP": "172.27.11.6/24",
+            "uplinkVlan": 3530
+        },{
+            "asnPeer": 65001,
+            "bgpPeerPassword": "VMware1!",
+            "peerIP": "172.27.12.253/24",
+            "uplinkInterfaceIP": "172.27.12.6/24",
+            "uplinkVlan": 3531
+        } ]
+    },{
+        "clusterId": "607baa00-6182-459b-8673-ca516620124e",
+        "edgeNodeName": "cmi-w01-en02.elasticsky.org",
+        "edgeTep1IP": "172.27.13.12/24",
+        "edgeTep2IP": "172.27.13.13/24",
+        "edgeTepGateway": "172.27.13.253",
+        "edgeTepVlan": 3532,
+        "interRackCluster": false,
+        "managementGateway": "10.0.0.221",
+        "managementIP": "10.0.0.29/24",
+        "uplinkNetwork": [ {
+            "asnPeer": 65001,
+            "bgpPeerPassword": "VMware1!",
+            "peerIP": "172.27.11.253/24",
+            "uplinkInterfaceIP": "172.27.11.7/24",
+            "uplinkVlan": 3530
+        },{
+            "asnPeer": 65001,
+            "bgpPeerPassword": "VMware1!",
+            "peerIP": "172.27.12.253/24",
+            "uplinkInterfaceIP": "172.27.12.7/24",
+            "uplinkVlan": 3531
+        } ]
+    } ]
+}

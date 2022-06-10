@@ -1,5 +1,5 @@
 # ====================================================================================
-#               Deploy new VI Workload Doamin
+#               Deploy new Management Edge Cluster and AVN Configuration
 #                                                                                    
 #  You must have PowerVCF and PowerCLI Modules installed in order to use this script     
 #                                                                                    
@@ -46,20 +46,21 @@ Request-VCFToken -fqdn $sddcManagerfqdn -username $ssoUser -password $ssoPass
 
 Start-Sleep 5
 
-# Get the management cluster ID from SDDC Manager and store it in a variable
-logger "Get the first three available hosts"
-$availableHosts = $(Get-VCFHost | Where-Object {$_.status -match "UNASSIGNED_USEABLE"} | Select-Object -ExpandProperty id -First 3)
+# Get the VI Workload Domain cluster ID from SDDC Manager and store it in a variable
+logger "Geting the management vSphere cluster ID"
+$sddcClusterid = $(get-vcfworkloaddomain | Where-Object { $_.type -match "VI" } | Select-Object -ExpandProperty clusters).id
 
-logger "Getting default VI Workload Domain Configuration file and populating the Host Id"
-# Get the NSX Edge Cluster config and convert it from JSON to a PSObject, then store it in a variable
-$wldPayload = $(get-content "$scriptdir\WLD_DOMAIN_API.json" | ConvertFrom-JSON)
-$hstCnt = 0
-$wldPayload.computeSpec.clusterSpecs.hostSpecs | Foreach {$_.id = $availableHosts[$hstCnt];$hstCnt++}
+logger "Getting default Edge CLuster JSON Configuration file and populating clusterId"
+# Get the VI WLD NSX Edge Cluster config and convert it from JSON to a PSObject, then store it in a variable
+$edgeClusterPayload = $(get-content "$scriptdir\NSX_EdgeCluster_API_WLD.json" | ConvertFrom-JSON)
 
-logger "Writing new VI Workload Domain Configuration file"
+# Find all entries for Cluster ID and replace the existing entry with the management cluster ID
+$edgeClusterPayload.edgeNodeSpecs | ForEach-Object {$_.clusterID = $sddcClusterId}
+
+logger "Writing new Edge Cluster Configuration file"
 # convert the PSObject to a JSON file and save it as a new JSON
-$($wldPayload | ConvertTo-JSON -Depth 10) | Out-File "$scriptDir\VIWLD.json"
+$($edgeClusterPayload | ConvertTo-JSON -Depth 10) | Out-File "$scriptDir\WLD_Edge_Cluster.json"
 
 logger "Deploying Edge Cluster"
-$edgeDeploy = New-VCFWorkloadDomain -json "$scriptDir\VIWLD.json"
+$edgeDeploy = New-VCFEdgeCluster -json "$scriptDir\WLD_Edge_Cluster.json"
 do { $taskStatus = Get-VCFTask -id $($edgeDeploy.id) | Select-Object status; Start-Sleep 5 } until ($taskStatus -match "Successful")

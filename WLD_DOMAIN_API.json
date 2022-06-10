@@ -19,7 +19,7 @@
         "name": "cmi-w01-cl01",
         "hostSpecs": [
           {
-            "id": "317b83cb-4980-4dee-b94b-c32ade850e60",
+            "id": "",
             "licenseKey": "004R1-9H00K-88KR1-0J7RM-2WZ42",
             "hostNetworkSpec": {
               "vmNics": [
@@ -43,7 +43,7 @@
             }
           },
           {
-            "id": "188935a7-7b4d-412a-a015-26cb6ba9a1b0",
+            "id": "",
             "licenseKey": "004R1-9H00K-88KR1-0J7RM-2WZ42",
             "hostNetworkSpec": {
               "vmNics": [
@@ -67,7 +67,7 @@
             }
           },
           {
-            "id": "7d49f267-753d-4202-b2f2-290ea42694d8",
+            "id": "",
             "licenseKey": "004R1-9H00K-88KR1-0J7RM-2WZ42",
             "hostNetworkSpec": {
               "vmNics": [

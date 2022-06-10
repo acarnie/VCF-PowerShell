@@ -1,0 +1,26 @@
+{
+    "clusterExpansionSpec" : {
+      "hostSpecs" : [ { 
+        "id" : "",
+        "licenseKey": "004R1-9H00K-88KR1-0J7RM-2WZ42",
+        "username" : "root",
+        "hostNetworkSpec" : {
+          "vmNics" : [ {
+            "id" : "vmnic0",
+            "vdsName" : "cmi-w01-cl01-vds01"
+          }, {
+            "id" : "vmnic1",
+            "vdsName" : "cmi-w01-cl01-vds01"
+          }, {
+            "id" : "vmnic2",
+            "vdsName" : "cmi-w01-cl01-vds02"
+          }, {
+            "id" : "vmnic3",
+            "vdsName" : "cmi-w01-cl01-vds02"
+          } ]
+        }
+      }
+     ],
+      "interRackExpansion": false
+    }    
+}

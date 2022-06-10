@@ -59,7 +59,7 @@ $edgeClusterPayload.edgeNodeSpecs | ForEach-Object {$_.clusterID = $sddcClusterI
 
 logger "Writing new Edge Cluster Configuration file"
 # convert the PSObject to a JSON file and save it as a new JSON
-$($edgeClusterPayload | ConvertTo-JSON -Depth 10) | Out-File "$scriptDir\MGMT_Edge_Cluster.json"
+$($edgeClusterPayload | ConvertTo-JSON -Depth 10) | Out-File "$scriptDir\json\MGMT_Edge_Cluster.json"
 
 logger "Deploying Edge Cluster"
 $edgeDeploy = New-VCFEdgeCluster -json "$scriptDir\json\MGMT_Edge_Cluster.json"
